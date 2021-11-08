@@ -1,1 +1,3 @@
-// export mongodb url
+module.exports = {
+  url: process.env.MONGODB || "",
+};

@@ -14,11 +14,13 @@ var userSchema = mongoose.Schema({
         type: String
     },
     admin: {
-        type: String
+        type: Boolean
     },
     cart: {
         type: Object
     }
+}, {
+    versionKey: false
 });
 
 var User = module.exports = mongoose.model('User', userSchema);
@@ -39,7 +41,7 @@ module.exports.getUserByEmail = function (email, callback) {
 
 
 module.exports.getUserById = function (id, callback) {
-    User.findById(id, callback);
+    User.findById(id, callback).select('-password');
 }
 module.exports.comparePassword = function (givenPassword, hash, callback) {
     bcrypt.compare(givenPassword, hash, function (err, isMatch) {

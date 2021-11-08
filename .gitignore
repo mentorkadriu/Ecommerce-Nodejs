@@ -6,5 +6,6 @@
 
 /configs/paypal-config.js
 
-
+.idea
+.env
 
